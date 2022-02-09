@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+# 配置搜索引擎访问相关
+User-agent: *
+Disallow:
