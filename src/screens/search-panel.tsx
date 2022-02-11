@@ -1,7 +1,36 @@
 // 显示引入React
 import React from "react"
 
-export const SearchPanel = ({users,param,setParam}) => {
+/**
+ * 定义User结构
+ */
+export interface User {
+    id:string,
+    name:string,
+    token:string
+}
+
+/**
+ * 定义组件参数类型
+ */
+interface SearchPanelProps {
+    users:User[],
+    param:{
+        name:string,
+        personId:string
+    },
+    // setParam是一个没有返回值的函数，它的参数是SearchPanelProps接口的param属性类型
+    setParam:(param:SearchPanelProps['param']) => void
+}
+
+/**
+ * SearchPanelProps是指定参数类型的接口
+ * @param users
+ * @param param
+ * @param setParam
+ * @constructor
+ */
+export const SearchPanel = ({users,param,setParam}:SearchPanelProps) => {
 
     return <form>
         <div>

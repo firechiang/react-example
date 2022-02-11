@@ -2,7 +2,9 @@ import React from "react"
 import {SearchPanel} from "./search-panel"
 import {List} from "./list"
 import {useEffect, useState} from "react"
-import {cleanObject, useDebounced, useMount} from "../utils/index"
+import {cleanObject, useDebounced, useMount} from "../utils"
+import {useGet} from "utils/http"
+
 // 将对象转换成Get请求参数格式的工具
 import Qs from "qs"
 
@@ -22,32 +24,23 @@ export const ProjectListScreens = () => {
     // 使用useDebounced监听状态变量变化后并返回（平滑用户输入事件监听）
     const debouncedParam = useDebounced(param,2000)
 
+    const httpGet = useGet()
+
     // 请求接口获取列表数据（触发条件是当debouncedParam对象发生变化时）
     useEffect(() => {
-        // 使用fetch发起请求获取list列表数据
-        fetch(`${RestApiUrl}/test/projects?${Qs.stringify(cleanObject(debouncedParam))}`).then(async response=> {
-            // 请求成功（Http状态200）
-            if(response.ok) {
-                // 给list状态变量赋值
-                setList(await response.json())
-            }
-        })
+        // 发起请求获取list列表数据，成功了给list状态变量赋值
+        httpGet("/test/projects",{data:debouncedParam}).then(setList)
     },[debouncedParam])
 
 
     useMount(() => {
-        fetch(`${RestApiUrl}/test/users`).then(async response => {
-            // 请求成功（Http状态200）
-            if(response.ok) {
-                // 给users状态变量赋值
-                setUsers(await response.json())
-            }
-        })
-    },[])
+        // 发起请求获取users列表数据，成功了给users状态变量赋值
+        httpGet("/test/users").then(setUsers)
+    })
 
     return <div>
         {/*指定状态变量并传递给组件*/}
         <SearchPanel users = {users} param={param} setParam={setParam}/>
-        <List users = {users} list={list} setList={setList}/>
+        <List users = {users} list={list}/>
     </div>
 }

@@ -1,12 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {ProjectListScreens} from "./screens/index";
+import {ProjectListScreens} from "./screens";
+import {LoginScreen} from "./screens/login/index"
+import {MainPage} from "main/index"
+import styled from "@emotion/styled"
+
+
+import {Button} from "antd"
 
 function App() {
   return (
     <div className="App">
-      <ProjectListScreens/>
+        <LoginScreen/>
+        {/*<MainPage/>*/}
+        {/*<ProjectListScreens/>
+        <Button type="primary">Button</Button>*/}
     </div>
   );
 }

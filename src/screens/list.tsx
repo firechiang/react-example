@@ -1,7 +1,25 @@
 // 显示引入React
 import React from "react"
+import {User} from "./search-panel"
 
-export const List = ({users,list}) => {
+interface Project {
+    id:string,
+    name:string,
+    personId:string
+}
+
+interface ListProps {
+    users:User[]
+    list:Project[]
+}
+
+/**
+ * ListProps是指定参数类型的接口
+ * @param users
+ * @param list
+ * @constructor
+ */
+export const List = ({users,list}:ListProps) => {
 
     return <table>
         <thead>

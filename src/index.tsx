@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {AppProviders} from "context/index"
+// antd样式
+import "antd/dist/antd.less"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      {/* 用上下文组件将页面组件全部包裹起来，这样页面里面就可以用上下文组件里面的数据 */}
+      <AppProviders>
+          <App />
+      </AppProviders>
   </React.StrictMode>,
   document.getElementById('root')
 );

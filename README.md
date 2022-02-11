@@ -4,6 +4,14 @@
 $ npx create-react-app react-example --template typescript
 ```
 
+##### 安装启动
+```
+# 安装依赖
+$ yarn install
+# 启动
+$ yarn start
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
