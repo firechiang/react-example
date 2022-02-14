@@ -5,6 +5,7 @@ import {ProjectListScreens} from "./screens";
 import {LoginScreen} from "./screens/login/index"
 import {MainPage} from "main/index"
 import styled from "@emotion/styled"
+import {FullPageLoading} from "components/lib"
 
 
 import {Button} from "antd"
@@ -14,8 +15,10 @@ function App() {
     <div className="App">
         <LoginScreen/>
         {/*<MainPage/>*/}
+        {/*<FullPageLoading/>*/}
         {/*<ProjectListScreens/>
         <Button type="primary">Button</Button>*/}
+
     </div>
   );
 }

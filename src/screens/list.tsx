@@ -1,16 +1,17 @@
 // 显示引入React
 import React from "react"
 import {User} from "./search-panel"
+import {TableProps,Table} from "antd";
 
-interface Project {
+export interface Project {
     id:string,
     name:string,
     personId:string
 }
 
-interface ListProps {
+// TableProps里面有个dataSource属性它的类型就是 Project
+interface ListProps extends TableProps<Project>{
     users:User[]
-    list:Project[]
 }
 
 /**
@@ -19,26 +20,33 @@ interface ListProps {
  * @param list
  * @constructor
  */
-export const List = ({users,list}:ListProps) => {
+export const List = ({users,...props}:ListProps) => {
 
-    return <table>
-        <thead>
-            <tr>
-                <th>名称</th>
-                <th>负责人</th>
-            </tr>
-        </thead>
-        <tbody>
-        {
-            // 遍历生成td标签
-            //
-            list.map(project =>
-                <tr key={project.id}>
-                    <td>{project.name}</td>
+      return (
+        <Table
+          pagination={false}
+          rowKey="id"
+          columns={[
+            {
+              title: "名称",
+              dataIndex: "name",
+              sorter: (a, b) => a.name.localeCompare(b.name),
+            },
+            {
+              title: "负责人",
+              render: (value, project) => (
+                <span>
                     {/*通过personId查找用户名称（注意：? 号表示如果没有找到就不执行.name代码；还有加了||就表示没有找到用户就返回 ''）*/}
-                    <td>{users.find(user => user.id === project.personId)?.name || ''}</td>
-                </tr>)
-        }
-        </tbody>
-    </table>
+                    {users.find((user: User) => user.id === project.personId)?.name || ''}
+                </span>
+              ),
+            },
+          ]}
+          // 将使用处传过来的属性都展开到这里（包括 dataSource 和 loading）
+          {
+              ...props
+          }
+          //dataSource={list}
+        />
+      );
 }
