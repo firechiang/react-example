@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Link} from "react-router-dom"
 import {ProjectListScreens} from "screens/index";
 import {ProjectInfo} from "screens/info"
 import {LoginScreen} from "screens/login/index";
+import {restRoute} from "utils/index"
 
 export const MainPage = () => {
 
@@ -20,7 +21,10 @@ export const MainPage = () => {
         <Container>
             <Header>
                 <HeaderLeft gap={true}>
-                    <Logo width={'7rem'} color={'rgb(38,132,255)'}/>
+                    {/*点击跳转首页*/}
+                    <SoftwareLogo type={"link"} onClick={restRoute}>
+                        <Logo width={'7rem'} color={'rgb(38,132,255)'}/>
+                    </SoftwareLogo>
                     <h3>项目</h3>
                     <h3>用户</h3>
                 </HeaderLeft>
@@ -119,4 +123,10 @@ const Footer = styled.footer`
 
 const HeaderItem = styled.h3`
   margin-right: 3rem;
+`
+
+const SoftwareLogo = styled(Button)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

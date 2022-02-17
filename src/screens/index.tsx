@@ -15,6 +15,7 @@ import {Typography} from "antd";
 
 import {ErrorBoundary} from "components/error-boundary"
 import {FullPageErrorFallback} from "components/lib"
+import {useUrlQueryParam} from "../utils/url";
 
 // 执行 npm start 取.env.development文件里面的值，执行 npm run build 取.env文件里面的值（注意：这些是自动获取的，不需要做什么操作）
 // 注意：配置文件里面的变量名必须由 REACT_APP_ 开头否则不读取
@@ -22,10 +23,9 @@ const RestApiUrl = process.env.REACT_APP_ApiUrl
 
 export const ProjectListScreens = () => {
     // 状态变量param（在这里也是参数），使用useState函数的参数指定状态变量的数据类型,调用setParam函数设值
-    const [param,setParam] = useState({
-        name:'',
-        personId:''
-    })
+    //const [keys] = useState<("name"|"personId")[]>(["name","personId"])
+    // param的值首先会自动从浏览器起地址参数中获取
+    const [param,setParam] = useUrlQueryParam(["name","personId"])
     // 定义状态变量users，使用useState函数的参数指定状态变量的数据类型,调用setUsers函数设值
     const [users,setUsers] = useState([])
     // 使用useDebounced监听状态变量变化后并返回（平滑用户输入事件监听）
