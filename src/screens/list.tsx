@@ -33,7 +33,7 @@ export const List = ({users,...props}:ListProps) => {
               //dataIndex: "name",
               sorter: (a, b) => a.name.localeCompare(b.name),
               render(value,project) {
-                  /*to指定要去的路由地址（默认去到当前路由的子路由并加上project.id参数），String(project.id)表示强制将id转换成String类型*/
+                  /*String(project.id)表示强制将id转换成String类型*/
                   return <Link to={`/projects/${project.id}`}>{project.name}</Link>
               }
             },
