@@ -7,6 +7,7 @@ import styled from "@emotion/styled"
 import logo from "assets/logo.svg"
 import background_left from "assets/left.svg"
 import background_right from "assets/right.svg"
+import {useDocumentTitle} from "../../utils";
 
 // 执行 npm start 取.env.development文件里面的值，执行 npm run build 取.env文件里面的值（注意：这些是自动获取的，不需要做什么操作）
 // 注意：配置文件里面的变量名必须由 REACT_APP_ 开头否则不读取
@@ -48,6 +49,7 @@ export const login = (param:{username:string,password:string}) => {
 }
 
 export const LoginScreen = () => {
+    useDocumentTitle("登录")
     // 登录函数使用上下文useAuth组件里面login函数，并使用上下文组件里面user属性对象（注意：上下文组件里面的东西是全局）
     const {user,login} = useAuth()
     /**

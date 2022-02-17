@@ -1,4 +1,4 @@
-import {useState,useEffect} from "react"
+import {useState, useEffect, useRef} from "react"
 
 // 判断只是不是false（注意：一个!value表示取反，两个!!value表示取反再取反）（注意：any 表示任意类型，unknown也表示任意类型，但是unknown比any更严格建议使用）
 // 该函数的返回值类型是 boolean
@@ -60,4 +60,25 @@ export const useArray = <S>(initialArray: S[]) => {
         }
 
     }
+}
+
+/**
+ * 修改浏览器标签头信息
+ * @param title
+ * @param keepOnUnmount 是否还原浏览器标签头信息（false: 还原，true 不还原）
+ */
+export const useDocumentTitle = (title: string,keepOnUnmount: boolean = true) => {
+    // useRef返回的值在整个组件的生命周期内都不会改变
+    const oldTitle = useRef(document.title).current
+    useEffect(()=>{
+        document.title = title
+    },[title])
+
+    useEffect(()=>{
+        return () => {
+            if(!keepOnUnmount) {
+                document.title = oldTitle
+            }
+        }
+    },[keepOnUnmount,oldTitle])
 }

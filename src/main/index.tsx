@@ -3,6 +3,12 @@ import styled from "@emotion/styled"
 import {StyleRow} from "components/lib"
 import {ReactComponent as Logo} from "assets/logo.svg"
 import {Dropdown,Menu,Button} from "antd";
+import {Navigate,Routes,Route} from "react-router";
+import {BrowserRouter as Router, Link} from "react-router-dom"
+
+import {ProjectListScreens} from "screens/index";
+import {ProjectInfo} from "screens/info"
+import {LoginScreen} from "screens/login/index";
 
 export const MainPage = () => {
 
@@ -30,6 +36,15 @@ export const MainPage = () => {
                 </HeaderRight>
             </Header>
             <Main>
+                <Router>
+                    <Routes>
+                        <Route path={"/login"} element={<LoginScreen/>}/>
+                        <Route path={"/"} element={<ProjectListScreens/>}/>
+                        {/*projectId是参数*/}
+                        <Route path={"/projects/:projectId/*"} element={<ProjectInfo/>}/>
+                        <Route path={"/buttons"} element={<Button type="primary">Button</Button>}/>
+                    </Routes>
+                </Router>
 
             </Main>
         </Container>
