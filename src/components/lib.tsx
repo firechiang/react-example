@@ -45,3 +45,12 @@ const FullPage = styled.div`
   // 垂直居中
   align-items: center;
 `
+
+// 类型守卫
+const isError = (value: any): value is Error => value?.message;
+
+export const ErrorBox = ({error}: {error: unknown}) => {
+    if(isError(error)) {
+        return <Typography.Text type={"danger"}>{error?.message}</Typography.Text>
+    }
+}

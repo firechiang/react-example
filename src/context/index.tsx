@@ -3,11 +3,12 @@
  */
 import React,{ReactNode} from "react"
 import {AuthProvider} from "context/auth-context"
+import {QueryClient,QueryClientProvider} from "react-query"
 
 // 指定参数是children而它的类型是ReactNode
 export const AppProviders = ({children}:{children: ReactNode}) => {
-
-    return <AuthProvider>
-        {children}
-    </AuthProvider>
+    const queryClient = new QueryClient()
+    return <QueryClientProvider client={queryClient}>
+        <AuthProvider>{children}</AuthProvider>
+    </QueryClientProvider>
 }
