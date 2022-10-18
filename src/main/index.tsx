@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import {StyleRow} from "components/lib"
+// React组件的方式渲染 svg 它可以直接在代码里面修改图片的各个属性
 import {ReactComponent as Logo} from "assets/logo.svg"
 import {Dropdown,Menu,Button} from "antd";
 import {Navigate,Routes,Route} from "react-router";
