@@ -68,6 +68,7 @@ const Container = styled.div`
       "header header header"
       "nav main aside"
       "footer footer footer";
+  // 100vh表示显示器高度    
   height: 100vh;
   // grid布局每个组件相隔距离
   //grid-gap: 1rem;
