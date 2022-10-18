@@ -10,7 +10,9 @@ export const StyleRow = styled.div<{
     marginBottom?: number
 }>`
   display: flex;
+  // 子元素居中
   align-items: center;
+  // 如果justify-content=space-between 且只有两个子元素那么效果就是一个元素靠左，一个元素靠右
   justify-content: ${props => props.between ? 'space-between' : undefined};
   margin-bottom: ${props => props.marginBottom+'rem'};
   // 设置子元素样式
