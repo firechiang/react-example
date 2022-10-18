@@ -80,8 +80,9 @@ const Header = styled.header`
   grid-area: header;
   // 布局flex-box
   display: flex;
-  // 元素以行排列
+  // 子元素以行排列
   flex-direction: row;
+  // 子元素居中
   align-items: center;
   justify-content: space-between;
   height: 6rem;
