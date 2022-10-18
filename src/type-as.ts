@@ -14,7 +14,7 @@ type Person = {
     age: number
 }
 
-// 定义一个类型PersonKeys它的属性从Person里面来，但是它的属性是可选的，也就是非必传
+// 定义一个类型PersonKeys它的属性从Person里面来（keyof就是将一个对象里面的所有属性都取出来）
 type PersonKeys = keyof Person
 
 /**
