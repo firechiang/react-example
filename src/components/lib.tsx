@@ -13,6 +13,7 @@ export const StyleRow = styled.div<{
   align-items: center;
   justify-content: ${props => props.between ? 'space-between' : undefined};
   margin-bottom: ${props => props.marginBottom+'rem'};
+  // 设置子元素样式
   > * {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
