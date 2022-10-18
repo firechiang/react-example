@@ -26,7 +26,7 @@ const maomao: Person = {
 }
 
 /**
- * 使用Partial修饰Person类型定义对象的属性可以和Person属性不一样
+ * 使用Partial修饰Person类型定义对象的属性，使得属性是可选的，也就是非必传
  */
 const tinatian: Partial<Person> = {
 
@@ -39,7 +39,7 @@ const ddd: Omit<Person, "name" | "age"> = {
 }
 
 /**
- * 定义一个Partial类型，用来修饰泛型类型
+ * 定义一个PartialP类型，用来修饰泛型的类型，使得其属性是可选的，也就是非必传（注意：这个其实就是官方的 Partial 实现代码）
  */
 type PartialP<T> = {
     // 所有的属性来自T；?号表示属性是可选的，也就是非必传；属性的类型和T的属性类型一致
