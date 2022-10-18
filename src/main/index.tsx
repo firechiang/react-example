@@ -78,12 +78,13 @@ const Container = styled.div`
 const Header = styled.header`
   // grid-area是指定当前样式作用于grid布局里面的那个位置
   grid-area: header;
-  // 布局flex-box
+  // 当前组件使用flex-box布局
   display: flex;
   // 子元素以行排列
   flex-direction: row;
   // 子元素居中
   align-items: center;
+  // space-between 表示如果只有两个子元素那么效果就是一个元素靠左，一个元素靠右
   justify-content: space-between;
   height: 6rem;
   padding: 3.2rem;
