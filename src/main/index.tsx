@@ -75,7 +75,7 @@ const Container = styled.div`
 
 // 顶部
 const Header = styled.header`
-  // grid-area 是给grid布局里面的子组件取名字
+  // grid-area是指定当前样式作用于grid布局里面的那个位置
   grid-area: header;
   // 布局flex-box
   display: flex;
