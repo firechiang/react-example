@@ -57,10 +57,11 @@ export const MainPage = () => {
 
 
 const Container = styled.div`
+  // 本组件使用grid布局
   display: grid;
-  // grid布局，顶部高6rem，中间1fr（就是自适应），底部高6rem
+  // grid布局行定义：第一行（也就是顶部）高6rem，第二行（也就是中间）1fr=自适应，第三行（也就是底部）高6rem
   grid-template-rows: 6rem 1fr 6rem;
-  // grid布局，左边宽20rem，中间1fr（就是自适应），右边宽20rem
+  // grid布局列定义：第一列（也就是左边）宽20rem，第二列（也就是中间）1fr=自适应，第三列（也就是右边）宽20rem
   grid-template-colums: 20rem 1fr 20rem;
   // 实际布局（就是哪个位置放哪个）下面是个三行三列的布局
   grid-template-areas:
